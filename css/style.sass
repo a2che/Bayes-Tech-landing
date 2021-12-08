@@ -1,6 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap')
+$font:		Source Sans Pro, sans-serif
+$primary-color: #6A6E71
+$target-color: #050C42
+$primary-shadow : 0px 3.61062px 9.02655px rgba(0, 0, 0, 0.05)
+$secondary-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1)
+$transition-speed: 0.2s
 
 
+=font($family,$style,$weight,$size,$line-height,$color)
+	font-family: $family, sans-serif
+	font-style: $style
+	font-weight: $weight
+	font-size: $size
+	line-height: $line-height
+	color: $color
+=flexSB()
+	display: flex
+	justify-content: space-between
+	align-items: center
+	flex-wrap: wrap 
+	flex-direction: row
+=flexC()
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-wrap: wrap 
+	flex-direction: row
+
+
+
+
+@mixin mediaSize($size) 
+	@if $size == xxl
+		@media (min-width: 1440px)
+			@content 
+
+	@else if $size == xl 
+		@media (max-width: 1440px)
+			@content  
+
+	@else if $size == lg 
+		@media (max-width: 1200px)
+			@content  
+
+	@else if $size == md 
+		@media (max-width: 768px)
+			@content
+			
+	@else if $size == sm 
+		@media (max-width: 576px)
+			@content
+	@else if $size == xs
+		@media (max-width: 375px)
+			@content
+	@else if $size == xxs
+		@media (max-width: 320px)
+			@content
+
+
+section.main
+	@include mediaSize(xxl) 
+		padding-left: calc(50% - 700px)
+		padding-right: calc(50% - 700px)
+
+	@include mediaSize(xl) 
+		padding-left: calc(50% - 580px)
+		padding-right: calc(50% - 580px)
+
+	@include mediaSize(lg) 
+		padding-left: calc(50% - 360px)
+		padding-right: calc(50% - 360px)
+	
+	@include mediaSize(md) 
+		padding-left: calc(50% - 260px)
+		padding-right: calc(50% - 260px)
+
+	@include mediaSize(sm) 
+		padding: 0 15px
+	@include mediaSize(xxs) 
+		padding: 0px 0px
+	
+
+body
+	background: rgba(255, 254, 251, 0.8)
+	margin: 0
+h1,h2,h3,p 
+	margin: 0
+
+.wrapper
+	display: flex
+.sidebar
+	flex-grow: 0
+	width: 100%
+	max-width: 290px
+	box-shadow: $primary-shadow
+	padding: 27px 0px
+	& header
+		
+		display: flex
+		justify-content: center
+		
+		margin-bottom: 13px
+		padding: 0px 24px 0px 24px
+	& footer
+	&__header__image
+		width: 100%
+		border-bottom: 1px solid #D8E0E6
+		padding-bottom: 26px
+	&__menu
+		padding-left: 30px
+	&__club  
+		padding-top: 14px
+		
+		padding: 0px 24px 0px 24px
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+	&__nav
+
+		&__title
+			+font($font,normal,600,16px,22px,$primary-color)
+			width: 	100%
+			:nth-child(2)
+					border-top: 1px solid #D8E0E6
+		&__list
+			margin: 0
+			padding: 0
+			padding-bottom: 17px
+			list-style-type: none
+		&__item
+			padding-top: 4px
+			padding-bottom: 4px
+		&__link
+			position: relative
+			padding-top: 12px
+			padding-bottom: 12px
+			width: 100%
+			height: 100%
+			box-sizing: border-box
+			display: flex
+			align-items: center
+			text-decoration: none
+			&.active::after
+				content: ''
+				height: 52px
+				width: 0px
+				border: 1.5px solid $target-color
+				background-color: $target-color
+				position: absolute
+				right: 0
+				border-radius: 20px
+			&.active path
+					fill: $target-color
+			&.active span
+					+font($font,normal,600,18px,25px,$target-color)
+			& svg
+				width: 25px
+				margin-right: 16px
+			& path
+				fill: $primary-color
+				
+			& span
+				+font($font,normal,normal,18px,25px,$primary-color)
+
+				
+
+.currentClubLabel
+	border-top: 1px solid #D8E0E6
+	padding-top: 14px
+.currentClub
+	+flexC()
+	width: 100%
+	flex-direction: column
+	&__image
+		margin-top: 20px
+		margin-bottom: 6px
+	&__title
+		+font($font, normal,600,16px,22px,#050C42)
+	&__favourites
+		background: #ECF0F3
+		border-radius: 15px
+		list-style-type: none
+		margin: 0px
+		width: 100%
+		box-sizing: border-box
+		margin-top: 20px
+		padding: 6px 0px 17px 21px
+		margin-bottom: 	21px
+		&__bold
+
+				+font($font, normal, 600, 14px, 19px, #050C42)
+		&__item
+			&:not(:first-child)
+				border-top: 1px solid #D8E0E6
+			align-items: center	
+			display: flex
+			text-align: center
+			padding-bottom: 6px
+			padding-top: 	6px
+		&__image-wrapper
+			width: 	32px
+			display: flex			
+			justify-content: center	
+			align-items: center	
+			margin-right: 7px
+		&__image
+			margin-right: 	7px
+
+		&__text
+
+			
+				
+
+	&__changeClubBtn
+		display: flex
+		align-items: center
+		justify-content: center
+		text-decoration: none
+		padding-bottom: 33px
+		width: 100%  
+		border-bottom: 1px solid #D8E0E6
+
+
+		&__img
+			margin-right: 7px
+		&__text
+			+font($font, normal, 600, 16px, 22px, #050C42)
+
+.sidebar footer
+	padding-left: 24px
+	padding-right: 24px
+.feedbackBtn  
+	margin-top: 158px
+	width: 100%
+	background: #EC805B
+	border-radius: 5px
+	box-sizing: border-box
+	padding: 11px 12px 10px 19px
+	border: none
+	display: flex
+	align-items: center
+	justify-content: center
+	& svg
+		margin-right: 12px
+	& path
+	&__text
+		+font($font,normal,600,16px,22px,#fff)
+
+main  
+	flex-grow: 1
+
+	& header
+		+flexSB()
+
+	& h1
+		+font($font,normal,600,28px,38px, #050C42)
+		padding-left: 56px
+
+
+
+.main__header
+	box-shadow: $primary-shadow
+	display: flex  
+	align-items: center
+
+	&__list
+		list-style: none
+		margin: 0
+		padding: 0  
+		display: flex  
+		align-items: stretch
+		justify-content: space-between
+		gap: 90px
+		width: 100%
+	&__item
+		display: flex
+		align-items: center
+		flex-direction: column
+		justify-content: center
+		position: relative
+	&__item.active:after
+		content: ''
+		height: 1px   
+		width: 100%
+		border-bottom: 3px solid #050C42 
+		border-radius: 15px
+		position: absolute
+		bottom: 0
+
+	&__item.active  &__link
+		+font($font,normal,600,18px,25px, #050C42)
+
+	&__link
+		+font($font,normal,normal,18px,25px, #6A6E71)
+		text-decoration: none
+
+
+.logo
+	float: none
+	margin-right: 0
+.dashboard
+	&__attack, &__defence, &__pass, &__score
+	&__score
+		&__info
+		&__title
+	&__header
+		&__list
+		&__item
+		&__link
+			padding: 0
+	&__body  
+	&__lineup
+	&__title
+	&__table
+		&__name
+		&__time
+.player  
+	&__score
+	&__name
+	&__country
+		&__name
+		&__image
+	&__personal-number
+	&__photo
 .download-player
 	padding: 0
-    border-radius: 10px
-    height: 60px
+	border-radius: 10px
+	height: 60px
