@@ -82,11 +82,14 @@ section.main
 	
 
 body
-	background: rgba(255, 254, 251, 0.8)
+	background-color: #F7F8FA
+
 	margin: 0
 h1,h2,h3,p 
 	margin: 0
 
+.mla
+	margin-left: auto	
 .wrapper
 	display: flex
 .sidebar
@@ -94,7 +97,9 @@ h1,h2,h3,p
 	width: 100%
 	max-width: 290px
 	box-shadow: $primary-shadow
-	padding: 27px 0px
+	
+	height: 	100vh
+	background-color: #fff
 	& header
 		
 		display: flex
@@ -106,6 +111,7 @@ h1,h2,h3,p
 	&__header__image
 		width: 100%
 		border-bottom: 1px solid #D8E0E6
+		padding-top: 27px
 		padding-bottom: 26px
 	&__menu
 		padding-left: 30px
@@ -177,7 +183,7 @@ h1,h2,h3,p
 		margin-top: 20px
 		margin-bottom: 6px
 	&__title
-		+font($font, normal,600,16px,22px,#050C42)
+		+font($font, normal,600,16px,22px,$target-color)
 	&__favourites
 		background: #ECF0F3
 		border-radius: 15px
@@ -190,7 +196,7 @@ h1,h2,h3,p
 		margin-bottom: 	21px
 		&__bold
 
-				+font($font, normal, 600, 14px, 19px, #050C42)
+				+font($font, normal, 600, 14px, 19px, $target-color)
 		&__item
 			&:not(:first-child)
 				border-top: 1px solid #D8E0E6
@@ -226,7 +232,7 @@ h1,h2,h3,p
 		&__img
 			margin-right: 7px
 		&__text
-			+font($font, normal, 600, 16px, 22px, #050C42)
+			+font($font, normal, 600, 16px, 22px, $target-color)
 
 .sidebar footer
 	padding-left: 24px
@@ -255,7 +261,7 @@ main
 		+flexSB()
 
 	& h1
-		+font($font,normal,600,28px,38px, #050C42)
+		+font($font,normal,600,28px,38px, $target-color)
 		padding-left: 56px
 
 
@@ -264,6 +270,7 @@ main
 	box-shadow: $primary-shadow
 	display: flex  
 	align-items: center
+	margin-bottom: 	25px
 
 	&__list
 		list-style: none
@@ -271,8 +278,7 @@ main
 		padding: 0  
 		display: flex  
 		align-items: stretch
-		justify-content: space-between
-		gap: 90px
+		gap: 60px
 		width: 100%
 	&__item
 		display: flex
@@ -284,47 +290,159 @@ main
 		content: ''
 		height: 1px   
 		width: 100%
-		border-bottom: 3px solid #050C42 
+		border-bottom: 3px solid $target-color 
 		border-radius: 15px
 		position: absolute
 		bottom: 0
 
 	&__item.active  &__link
-		+font($font,normal,600,18px,25px, #050C42)
+		+font($font,normal,600,18px,25px, $target-color)
 
 	&__link
 		+font($font,normal,normal,18px,25px, #6A6E71)
 		text-decoration: none
+		height: 100%
+		display: flex
+		align-items: center
 
 
 .logo
 	float: none
 	margin-right: 0
+	padding: 13px 43px 13px 0px
 .dashboard
+	margin-left: 25px
+	margin-right: 24px
 	&__attack, &__defence, &__pass, &__score
 	&__score
 		&__info
+			flex-grow: 0
+			margin-left: 	auto
+			display: flex	  
+			justify-content: space-between	
+			align-items: center	
 		&__title
+			+font($font,normal,600,22px,26px,$target-color)
+			width: 	100%
+			max-width: 372px
+			padding-right: 	190px
+
+
+
+
+
+
 	&__header
+		border-radius: 20px 20px  0px  0px
+		background-color: #ECF0F3
+		+flexSB()
 		&__list
+			list-style: none
+			margin: 0
+			padding: 0  
+			display: flex  
+			align-items: stretch
+			justify-content: space-between
 		&__item
+			height: 65px
+			display: flex	
+			align-items: stretch
+			&.active
+				background-color: #fff
 		&__link
-			padding: 0
+			display: flex	
+			align-items: center	
+			padding: 0px 82px
+			text-decoration: none
+			+font($font,normal,600,16px,22px,$target-color)
+
 	&__body  
+		background-color: #fff
+		padding: 42px 43px
+		display: flex	
+		justify-content: space-between	
 	&__lineup
-	&__title
-	&__table
-		&__name
-		&__time
+		max-width: 	255px
+		width: 	100%
+		border-radius: 14px
+		padding: 	24px 23px
+		background: #ECF0F3
+		flex-grow: 0
+		&__title
+			+font($font,normal,600,18px,26px,$target-color )
+			margin-bottom: 	25px
+		&__table
+			width: 	100%
+
+			&__row
+				display: flex	  
+				align-items: center	
+				margin-bottom: 	24px
+			&__name
+				margin-left: 	18px
+				+font($font,normal,normal,18px,18px,#6A6E71)
+			&__time
+				margin-left: auto
+				+font($font,normal,normal,18px,18px,#6A6E71)
+
+
+
+
+
+
+
 .player  
+	background: #FFFFFF
+	box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1)
+	width: 	100%
+	max-width:	269px
+	height: 	92px
+	position: relative	
+	border-radius: 8px
+
+	+flexSB()
 	&__score
+		position: absolute	
+		background: #6CDC9D
+		border-radius: 8px 0px 0px 0px
+		+font($font,normal,600,16px,26px,#fff)
+		padding: 	3px 2px
+		top: 	0
+		left: 0	
+	&__info  
+
+
 	&__name
+		+font($font,normal,600,16px,26px, $target-color)
+		padding-left: 	28px
 	&__country
+		display: flex	
+		align-items: center	
 		&__name
+			+font($font,normal,600,14.6px,1, #D0D8DF)
+			padding-left: 	28px
+			margin-right: 	7px
 		&__image
 	&__personal-number
+		+font($font,normal,bold,100px,1,rgba(5, 12, 66, 0.1))
+		padding-right: 	50px
 	&__photo
+		position: absolute	
+		right: 10px	
+		bottom: 0	
 .download-player
 	padding: 0
 	border-radius: 10px
 	height: 60px
+	background: #EC805B
+	border-radius: 8px
+	border: none
+	cursor: pointer
+	margin-left: 	53px
+
+.metric 
+	display: flex	
+	flex-grow: 1
+	flex-direction: column	
+	&__graph
+		flex-grow: 	1
